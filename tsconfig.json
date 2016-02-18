@@ -21,5 +21,8 @@
     ],
     "files": [
         "main.ts"
-    ]
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }

@@ -37,7 +37,7 @@ var Main = (function () {
         Main.level.render();
     };
     return Main;
-})();
+}());
 var DefaultLevels = (function () {
     function DefaultLevels() {
     }
@@ -55,7 +55,7 @@ var DefaultLevels = (function () {
         DefaultLevels.levels.push(lvl1);
     };
     return DefaultLevels;
-})();
+}());
 var Level = (function () {
     function Level(level) {
         this.paused = false;
@@ -115,7 +115,7 @@ var Level = (function () {
             var dx = (block.x - this.player.x);
             var dy = (block.y - this.player.y);
             if (Math.abs(dx) <= w && Math.abs(dy) <= h) {
-                return i;
+                return parseInt(i);
             }
         }
         return -1;
@@ -125,8 +125,8 @@ var Level = (function () {
         Main.context.fillRect(0, 0, Main.canvas.width, Main.canvas.height);
         for (var i in this.tiles) {
             Main.context.fillStyle = this.getTilesColor(this.tiles[i]);
-            var x = (i % this.tilesWide) * this.tileSize - Camera.xo;
-            var y = Math.floor(i / this.tilesWide) * this.tileSize - Camera.yo;
+            var x = (parseInt(i) % this.tilesWide) * this.tileSize - Camera.xo;
+            var y = Math.floor(parseInt(i) / this.tilesWide) * this.tileSize - Camera.yo;
             Main.context.fillRect(x, y, this.tileSize + 1, this.tileSize + 1);
         }
         for (var i in this.itemBlocks) {
@@ -153,7 +153,7 @@ var Level = (function () {
         this.paused = !this.paused;
     };
     return Level;
-})();
+}());
 var ItemBlock = (function () {
     function ItemBlock(x, y, width, height) {
         this.deathTimerLength = 30;
@@ -208,7 +208,7 @@ var ItemBlock = (function () {
         }
     };
     return ItemBlock;
-})();
+}());
 var Player = (function () {
     function Player(x, y) {
         this.x = x;
@@ -289,7 +289,7 @@ var Player = (function () {
         this.eyeBlinkTimer = Math.random() * 300 + 300;
     };
     return Player;
-})();
+}());
 var Target = (function () {
     function Target() {
         this.x = 0;
@@ -309,7 +309,7 @@ var Target = (function () {
         Main.context.fill();
     };
     return Target;
-})();
+}());
 var Camera = (function () {
     function Camera() {
         Camera.xo = 0;
@@ -335,7 +335,7 @@ var Camera = (function () {
         Camera.yo = Math.min(Math.max(0, Camera.yo), Main.canvas.height);
     };
     return Camera;
-})();
+}());
 var Color = (function () {
     function Color(r, g, b) {
         this.r = r;
@@ -350,7 +350,7 @@ var Color = (function () {
     Color.red = new Color(179, 51, 51);
     Color.green = new Color(4, 150, 53);
     return Color;
-})();
+}());
 var Sound = (function () {
     function Sound() {
     }
@@ -374,7 +374,7 @@ var Sound = (function () {
     Sound.muted = false;
     Sound.volume = 0.6;
     return Sound;
-})();
+}());
 var Keyboard = (function () {
     function Keyboard() {
     }
@@ -390,7 +390,7 @@ var Keyboard = (function () {
     };
     Keyboard.keysdown = [];
     return Keyboard;
-})();
+}());
 var Mouse = (function () {
     function Mouse() {
         Mouse.x = -1;
@@ -410,7 +410,7 @@ var Mouse = (function () {
         Mouse.y = event.clientY - Main.canvasClientRect.top - 14;
     };
     return Mouse;
-})();
+}());
 function keydown(event) {
     Keyboard.keychange(event, true);
     if (event.keyCode === Keyboard.KEYS.SPACE)

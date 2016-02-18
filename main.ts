@@ -185,7 +185,7 @@ class Level {
 
             // NOTE(AJ): Fancy Minkowski sum!
             if (Math.abs(dx) <= w && Math.abs(dy) <= h) {
-                return i;
+                return parseInt(i);
             }
         }
         return -1; // no collisions
@@ -197,8 +197,8 @@ class Level {
 
         for (var i in this.tiles) {
             Main.context.fillStyle = this.getTilesColor(this.tiles[i]);
-            var x = (i % this.tilesWide) * this.tileSize - Camera.xo;
-            var y = Math.floor(i / this.tilesWide) * this.tileSize - Camera.yo;
+            var x = (parseInt(i) % this.tilesWide) * this.tileSize - Camera.xo;
+            var y = Math.floor(parseInt(i) / this.tilesWide) * this.tileSize - Camera.yo;
             Main.context.fillRect(x, y, this.tileSize+1, this.tileSize+1);
             // NOTE(AJ):
         }
